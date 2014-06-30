@@ -24,9 +24,46 @@ namespace lol
 {
 	class MainClass
 	{
-		public static void Main (string[] args)
+		public static int GCD(int a, int b)
+
 		{
-			Console.WriteLine ("Hello World!");
+
+			if (a == 0) return b;
+
+			if (b == 0) return a;
+
+			if (a == b) return a;
+
+			if (a == 1 || b == 1) return 1;
+
+			if ((a % 2 == 0) && (b % 2 == 0)) 
+
+				return 2 * GCD(a / 2, b / 2);
+
+			if ((a % 2 == 0) && (b % 2 != 0)) 
+
+				return GCD(a / 2, b);
+
+			if ((a % 2 != 0) && (b % 2 == 0)) 
+
+				return GCD(a, b / 2);
+
+			return GCD(b, (int)Math.Abs(a - b));
+
+		}
+
+		public static void Main() 
+
+		{
+
+			int x = 70;
+
+			int y = 105;
+
+			int gcd = GCD(x,y);
+
+			Console.WriteLine("НОД({0},{1})={2}", x, y, gcd);
+
 		}
 	}
 }
